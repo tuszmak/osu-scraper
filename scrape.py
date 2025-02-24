@@ -4,7 +4,8 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def scrape(until : int):
+def scrape(until : int, team_name : str):
+    """Scrape the osu! website for teams."""
     for i in range(1, until):
         url = f"https://osu.ppy.sh/teams/{i}"
 
@@ -17,9 +18,9 @@ def scrape(until : int):
 
             # Extract specific data
             title = soup.select_one("h1").text if soup.select_one("h1") else "No team found"
-            titleStrip = title.strip()
-            print(f"{i}: {titleStrip}")
-            if(titleStrip == "Hibike! Euphonium"):
+            title_strip = title.strip()
+            print(f"{i}: {title_strip}")
+            if(title_strip == team_name):
                 print(i)
                 break
             
@@ -27,4 +28,4 @@ def scrape(until : int):
             print("Failed to retrieve the page. Status code:", response.status_code)
         time.sleep(2)
 
-scrape(500)
+scrape(500, "Hibike! Euphonium")
