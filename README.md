@@ -1,4 +1,6 @@
-# This is a simple web scraper written in Python using the BeautifulSoup package
+# What is this?
+
+This is a simple web scraper written in Python using the BeautifulSoup package
 
 ## Why?
 
